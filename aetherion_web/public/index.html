@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Aetherion v5.0</title></head>
+<body style="background:#121212;color:#fff;padding:2rem;font-family:Arial;">
+    <h1>Aetherion Workspace</h1>
+    <div style="border:1px solid #333;padding:1rem;margin-bottom:1rem;">
+        <h2>Veo 3.1 Ad Generator</h2>
+        <input type="text" id="prompt" placeholder="A cinematic shot..." style="width:80%;padding:0.5rem;">
+        <button onclick="generateVideo()" style="padding:0.5rem;">Animate Image</button>
+        <p id="video-status"></p>
+    </div>
+    <div style="border:1px solid #333;padding:1rem;">
+        <h2>Quantum Computation</h2>
+        <button onclick="think()" style="padding:0.5rem;">Enable Thinking Mode</button>
+        <p id="quantum-status"></p>
+    </div>
+    <br><a href="/gallery/index.html" style="color:#4CAF50;">Explore App Gallery</a>
+    <script>
+        async function generateVideo() {
+            document.getElementById('video-status').innerText = 'Generating...';
+            const res = await fetch('/api/ai/veo3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: document.getElementById('prompt').value }) });
+            const data = await res.json();
+            document.getElementById('video-status').innerText = data.message;
+        }
+        async function think() {
+            document.getElementById('quantum-status').innerText = 'Thinking...';
+            const res = await fetch('/api/quantum/think', { method: 'POST' });
+            const data = await res.json();
+            document.getElementById('quantum-status').innerText = data.result;
+        }
+    </script>
+</body>
+</html>

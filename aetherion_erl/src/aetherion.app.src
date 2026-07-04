@@ -1,0 +1,8 @@
+{application, aetherion, [
+    {description, "Aetherion Fault-Tolerant Quantum Orchestrator"},
+    {vsn, "5.0.0"},
+    {registered, [aetherion_sup, quantum_worker]},
+    {applications, [kernel, stdlib, mnesia]},
+    {mod, {aetherion_app, []}},
+    {env, []}
+]}.

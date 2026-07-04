@@ -1,0 +1,9 @@
+[package]
+name = "aetherion_lang"
+version = "5.0.0"
+edition = "2021"
+
+[dependencies]
+z3 = "0.12.1"
+nalgebra = "0.32.3" # For quantum gate matrix operations
+rand = "0.8.5"      # For quantum measurement probabilities
